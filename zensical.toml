@@ -5,6 +5,8 @@
 site_name = "Collected Whizbangs"
 site_description = "Tutorials on APL programming techniques by Roy A. Sykes, Jr., collected in two volumes (STSC, 1978 and 1981)"
 site_author = "Roy A. Sykes, Jr."
+site_url = "https://xpqz.github.io/whizbangs/"
+repo_url = "https://github.com/xpqz/whizbangs"
 docs_dir = "web/docs"
 site_dir = "web/site"
 use_directory_urls = false
