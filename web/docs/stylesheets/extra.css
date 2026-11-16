@@ -45,10 +45,13 @@
 .md-typeset p.pgline { margin: 1.2em 0 0.2em; text-align: right; line-height: 1; }
 /* a page that begins mid-sentence: a raised number in the text, or in the margin when there is room */
 .md-typeset a.pg.pgin { font-size: 0.6em; vertical-align: 0.6em; padding: 0 0.25em; margin-left: 0.1em; }
+/* On wide screens markers sit at the right edge of the text column, which the text flows
+   around. They stay inside the column: the gutter beside it is too narrow when the
+   "On this page" sidebar is shown. */
 @media screen and (min-width: 76.25em) {
-  .md-typeset p.pgline { float: right; margin: 0.2em -4.2em 0 0; }
+  .md-typeset p.pgline { float: right; margin: 0.2em 0 0 1em; }
   .md-typeset a.pg.pgin {
-    float: right; margin: 0.15em -5.1em 0 0; font-size: 0.68em; vertical-align: baseline; padding: 0 0.35em;
+    float: right; margin: 0.35em 0 0 1em; font-size: 0.68em; vertical-align: baseline; padding: 0 0.35em;
   }
 }
 
