@@ -1,10 +1,17 @@
 # Collected Whizbangs — PDF to Markdown
 
-A repeatable conversion of
+A repeatable conversion of both volumes of Roy A. Sykes, Jr.'s *Collected
+Whizbangs* into Markdown and a web site:
 
 > *Collected Whizbangs: An Anthology Of Tutorials on APL Programming Techniques,
-> Volume 1*, by Roy A. Sykes, Jr., Scientific Time Sharing Corporation, August
-> 1978 (`197808_APL Plus Collected WhizBangs_P036-0878.pdf`, 25 scanned pages).
+> Volume 1*, Scientific Time Sharing Corporation, August 1978
+> (`197808_APL Plus Collected WhizBangs_P036-0878.pdf`, 25 scanned pages).
+>
+> *Collected Whizbangs, Volume 2*, STSC, Inc., 1981
+> (`vol2/Collected Whizbangs Volume 2.pdf`, 68 scanned pages, from the Internet
+> Archive item `collected-whizbangs-volume-2`). See [Volume 2](#volume-2).
+
+Most of this README describes Volume 1, which sits at the repository root.
 
 Output: [`docs/collected-whizbangs.md`](docs/collected-whizbangs.md), the
 transcription built from `src/pages`, and
@@ -149,9 +156,10 @@ several places.
 copy into `web/site`; open `web/site/index.html`, or run `make serve` for a
 live preview.
 
-- `tools/mksite.py` splits `docs/collected-whizbangs-corrected.md` into one
-  page per article in `web/docs`, adds a cover page, an "About this edition"
-  page and the verification notes, turns the per-page source comments into
+- `tools/mksite.py` splits each volume's corrected copy into one page per
+  article in `web/docs/vol1` and `web/docs/vol2`, adds a cover page and the
+  verification notes for each, a landing page and an "About this edition"
+  page for the collection, writes the `nav` in `zensical.toml`, turns the per-page source comments into
   printed-page markers, and rejoins sentences that a page break had split.
   The `.md` files in `web/docs` are generated; edit the corrected copy or the
   script instead.
@@ -160,6 +168,28 @@ live preview.
   domain), bundled so that the APL glyphs render without a network request.
 - Zensical is installed in `.venv` (`python3 -m venv .venv &&
   .venv/bin/pip install zensical`); version 0.1.1 was used.
+
+## Volume 2
+
+Volume 2 lives in `vol2/` with the same layout (`src/pages`, `docs`, `build`),
+and the same tools work on it with `WB_VOL=vol2` (`make vol2-extract`,
+`make vol2-build`, `make vol2-lint`). It is typeset rather than typewritten,
+scanned at 144 dpi, one page per PDF page: printed page *n* is PDF page *n*+8.
+The conventions are in [`vol2/src/TRANSCRIBING.md`](vol2/src/TRANSCRIBING.md).
+
+It went through the same stages as Volume 1, in this order: transcription by
+eye from the page images; the fidelity lint; running every executable example
+in APL\*PLUS/PC 4.1; a blind re-reading of every place where the run and the
+transcription disagreed; and a proofread of every page against the scan. The
+record is in [`vol2/docs/aplplus-verification.md`](vol2/docs/aplplus-verification.md),
+the per-page notes in [`vol2/docs/transcription-notes.md`](vol2/docs/transcription-notes.md).
+
+Unlike Volume 1, misreadings are corrected in `vol2/src/pages` itself, so
+`vol2/docs/collected-whizbangs.md` is already the corrected text.
+`tools/mkcorrected_vol2.py` only adds notes at the three places where the print
+itself is wrong (pp 8, 14, 37), giving
+`vol2/docs/collected-whizbangs-corrected.md`. The lint accepts lines checked by
+eye that a pattern flags anyway when they are listed in `vol2/src/lint-allow.txt`.
 
 ## Requirements
 

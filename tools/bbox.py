@@ -11,7 +11,9 @@ import re
 import subprocess
 import sys
 
-PDF = "197808_APL Plus Collected WhizBangs_P036-0878.pdf"
+import glob, os
+# Run from the volume directory (tools/extract.sh does); the one PDF there is the source.
+PDF = glob.glob("*.pdf")[0]
 WORD = re.compile(
     r'<word xMin="([\d.]+)" yMin="([\d.]+)" xMax="([\d.]+)" yMax="([\d.]+)">(.*?)</word>'
 )

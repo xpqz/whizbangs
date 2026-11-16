@@ -17,7 +17,8 @@ H=${5:?h}
 DPI=${6:-600}
 OUT=${7:-build/review/page${PAGE}-${X}-${Y}.png}
 
-PDF="$(cd "$(dirname "$0")/.." && pwd)/197808_APL Plus Collected WhizBangs_P036-0878.pdf"
+VOLDIR="$(cd "$(dirname "$0")/.." && pwd)${WB_VOL:+/$WB_VOL}"
+PDF="$(ls "$VOLDIR"/*.pdf | head -1)"
 mkdir -p "$(dirname "$OUT")"
 
 # pdftoppm takes pixel arguments at the requested resolution.

@@ -1,7 +1,10 @@
 # Derived: rebuild with `make extract`, `make site`
 /build/
+/vol2/build/
 /web/site/
 /web/docs/*.md
+/web/docs/vol1/
+/web/docs/vol2/
 /.cache/
 /.venv/
 __pycache__/

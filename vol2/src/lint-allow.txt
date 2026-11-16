@@ -1,0 +1,2 @@
+# p051: the glyph is a tilde (not), checked against the scan; `~1∊⍴,B` is "not a singleton".
+((~1∊⍴,B)/⍴B),(1∊⍴,B)/(⍴A),(1∊⍴,A)/(⍴⍴A)↓⍴B

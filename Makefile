@@ -12,9 +12,9 @@ PDF := 197808_APL Plus Collected WhizBangs_P036-0878.pdf
 OUT := docs/collected-whizbangs.md
 PAGES := $(sort $(wildcard src/pages/*.md))
 
-.PHONY: all extract build lint review clean check-tools corrected site serve
+.PHONY: all extract build lint review clean check-tools corrected site serve vol2-extract vol2-build vol2-lint vol2-corrected
 
-all: build lint
+all: build lint vol2-build vol2-lint
 
 extract:
 	bash tools/extract.sh
@@ -40,8 +40,21 @@ review:
 # Corrected copy and the Zensical site built from it (needs: python3 -m venv .venv && .venv/bin/pip install zensical).
 ZENSICAL ?= .venv/bin/zensical
 
-corrected:
+corrected: vol2-corrected
 	python3 tools/mkcorrected.py
+
+# Volume 2 lives in vol2/ with the same layout; the tools take WB_VOL=vol2.
+vol2-extract:
+	WB_VOL=vol2 WB_DPI=144 bash tools/extract.sh
+
+vol2-build:
+	WB_VOL=vol2 python3 tools/build.py
+
+vol2-lint:
+	WB_VOL=vol2 python3 tools/lint_apl.py
+
+vol2-corrected: vol2-build
+	python3 tools/mkcorrected_vol2.py
 
 site: corrected
 	python3 tools/mksite.py

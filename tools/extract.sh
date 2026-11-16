@@ -12,14 +12,19 @@
 # Use them to seed prose and to build a review queue; the images decide.
 set -euo pipefail
 
-cd "$(dirname "$0")/.."
-PDF="197808_APL Plus Collected WhizBangs_P036-0878.pdf"
+TOOLS="$(cd "$(dirname "$0")" && pwd)"
+cd "$TOOLS/.."
+# WB_VOL selects a volume directory (e.g. vol2); unset means volume 1 at the repo root.
+[ -n "${WB_VOL:-}" ] && cd "$WB_VOL"
+PDF=$(ls *.pdf | head -1)
+# Page images at the scan's own resolution: 300 dpi for volume 1, 144 for volume 2.
+DPI=${WB_DPI:-300}
 PAGES=$(pdfinfo "$PDF" | awk '/^Pages:/{print $2}')
 
 mkdir -p build/pages build/text/acrobat build/text/tesseract build/text/diff
 
 echo "==> page images (300dpi)"
-pdftoppm -r 300 -gray -png "$PDF" build/pages/page
+pdftoppm -r "$DPI" -gray -png "$PDF" build/pages/page
 for f in build/pages/page-*.png; do
   n=${f#build/pages/page-}; n=${n%.png}
   mv "$f" "build/pages/$(printf '%03d' "$((10#$n))").png"
@@ -31,7 +36,7 @@ for p in $(seq 1 "$PAGES"); do
 done
 
 echo "==> word boxes (Acrobat layer)"
-python3 tools/bbox.py > build/text/bbox.tsv
+python3 "$TOOLS/bbox.py" > build/text/bbox.tsv
 
 echo "==> OCR pass B: tesseract"
 for p in $(seq 1 "$PAGES"); do

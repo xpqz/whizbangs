@@ -10,11 +10,14 @@ with no paragraph break, for sentences and code that run across a page boundary.
 """
 from __future__ import annotations
 
+import os
 import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+REPO = Path(__file__).resolve().parent.parent
+# WB_VOL selects a volume directory (e.g. vol2); unset means volume 1 at the repo root.
+ROOT = REPO / os.environ["WB_VOL"] if os.environ.get("WB_VOL") else REPO
 SRC = ROOT / "src" / "pages"
 OUT = ROOT / "docs" / "collected-whizbangs.md"
 
@@ -52,7 +55,8 @@ def main() -> int:
             toc.append(f"- [{title}](#{anchor})")
     contents = "## Contents\n\n" + "\n".join(toc) + "\n\n"
 
-    front = (
+    meta = ROOT / "src" / "frontmatter.yaml"   # per-volume metadata; volume 1's is the default
+    front = ("---\n" + meta.read_text() + "---\n\n") if meta.exists() else (
         "---\n"
         'title: "Collected Whizbangs"\n'
         'subtitle: "An Anthology Of Tutorials on APL Programming Techniques, Volume 1"\n'

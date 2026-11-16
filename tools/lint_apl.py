@@ -12,12 +12,15 @@ Run with --list to print the glyph inventory used across the document.
 """
 from __future__ import annotations
 
+import os
 import re
 import sys
 from collections import Counter
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+REPO = Path(__file__).resolve().parent.parent
+# WB_VOL selects a volume directory (e.g. vol2); unset means volume 1 at the repo root.
+ROOT = REPO / os.environ["WB_VOL"] if os.environ.get("WB_VOL") else REPO
 SRC = ROOT / "src" / "pages"
 
 # Every character that may legitimately appear in an APL statement.
@@ -63,6 +66,8 @@ def balanced(line: str) -> str | None:
             in_str = not in_str
         if in_str:
             continue
+        if ch == "⍝":   # a comment may open a parenthesis that closes on the next line
+            break
         if ch == "(":
             depth_p += 1
         elif ch == ")":
@@ -78,6 +83,13 @@ def balanced(line: str) -> str | None:
     if depth_p or depth_b:
         return "unbalanced brackets"
     return None
+
+
+# Lines checked by eye that a SUSPECT pattern flags anyway: one exact line (stripped)
+# per line of src/lint-allow.txt, each with a reason in a comment above it.
+ALLOW_FILE = ROOT / "src" / "lint-allow.txt"
+ALLOW = {l.strip() for l in ALLOW_FILE.read_text().splitlines()
+         if l.strip() and not l.startswith("#")} if ALLOW_FILE.exists() else set()
 
 
 def main() -> int:
@@ -124,7 +136,7 @@ def main() -> int:
                     errors += 1
                     break
             for pattern, msg in SUSPECT:
-                if msg and pattern.search(line):
+                if msg and line.strip() not in ALLOW and pattern.search(line):
                     print(f"{where}: {msg}: {line.strip()[:60]}")
                     errors += 1
             problem = balanced(line.lstrip("0123456789 "))

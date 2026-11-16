@@ -3,35 +3,55 @@
 #   zensical build             build to web/site      (zensical serve for a live preview)
 [project]
 site_name = "Collected Whizbangs"
-site_description = "An Anthology of Tutorials on APL Programming Techniques, Volume 1, by Roy A. Sykes, Jr. (STSC, 1978)"
+site_description = "Tutorials on APL programming techniques by Roy A. Sykes, Jr., collected in two volumes (STSC, 1978 and 1981)"
 site_author = "Roy A. Sykes, Jr."
 docs_dir = "web/docs"
 site_dir = "web/site"
 use_directory_urls = false
 extra_css = ["stylesheets/extra.css"]
 nav = [
-  { "Cover" = "index.md" },
-  { "Note to Readers" = "note-to-readers.md" },
-  { "Articles" = [
-    { "What's in a Name?" = "whats-in-a-name.md" },
-    { "Permutation Vectors in APL – A Rank Answer" = "permutation-vectors.md" },
-    { "Subscription" = "subscription.md" },
-    { "Some Notes on Date Storage" = "date-storage.md" },
-    { "Stretching the Workspace" = "stretching-the-workspace.md" },
-    { "Branching and Iteration" = "branching-and-iteration.md" },
-    { "String Searching" = "string-searching.md" },
-    { "Timing Algorithms" = "timing-algorithms.md" },
-    { "Using Booleans to Control Computation" = "booleans.md" },
-    { "APL Potpourri" = "apl-potpourri.md" },
-    { "Data Selection" = "data-selection.md" },
-    { "Why Not to Loop" = "why-not-to-loop.md" },
-    { "Character Searches" = "character-searches.md" },
-    { "Back to Basics" = "back-to-basics.md" },
+  { "Home" = "index.md" },
+  { "Volume 1" = [
+    { "Cover" = "vol1/index.md" },
+    { "Note to Readers" = "vol1/note-to-readers.md" },
+    { "What's in a Name?" = "vol1/whats-in-a-name.md" },
+    { "Permutation Vectors in APL – A Rank Answer" = "vol1/permutation-vectors.md" },
+    { "Subscription" = "vol1/subscription.md" },
+    { "Some Notes on Date Storage" = "vol1/date-storage.md" },
+    { "Stretching the Workspace" = "vol1/stretching-the-workspace.md" },
+    { "Branching and Iteration" = "vol1/branching-and-iteration.md" },
+    { "String Searching" = "vol1/string-searching.md" },
+    { "Timing Algorithms" = "vol1/timing-algorithms.md" },
+    { "Using Booleans to Control Computation" = "vol1/booleans.md" },
+    { "APL Potpourri" = "vol1/apl-potpourri.md" },
+    { "Data Selection" = "vol1/data-selection.md" },
+    { "Why Not to Loop" = "vol1/why-not-to-loop.md" },
+    { "Character Searches" = "vol1/character-searches.md" },
+    { "Back to Basics" = "vol1/back-to-basics.md" },
+    { "Verification notes" = "vol1/verification.md" },
   ] },
-  { "This edition" = [
-    { "About this edition" = "about.md" },
-    { "Verification notes" = "verification.md" },
+  { "Volume 2" = [
+    { "Cover" = "vol2/index.md" },
+    { "Note to Readers" = "vol2/note-to-readers.md" },
+    { "⍴A+B Problem" = "vol2/rho-a-b-problem.md" },
+    { "Does It Exist?" = "vol2/does-it-exist.md" },
+    { "Where Is It?" = "vol2/where-is-it.md" },
+    { "The \"All But\" Case" = "vol2/the-all-but-case.md" },
+    { "Numeric Sorts" = "vol2/numeric-sorts.md" },
+    { "Other Sorts" = "vol2/other-sorts.md" },
+    { "CSORTR Algorithm" = "vol2/csortr-algorithm.md" },
+    { ")ORIGIN 0" = "vol2/origin-0.md" },
+    { "Error Checking" = "vol2/error-checking.md" },
+    { "A Clever Sort" = "vol2/a-clever-sort.md" },
+    { "Arrays of Arrays" = "vol2/arrays-of-arrays.md" },
+    { "Expansive Thinking" = "vol2/expansive-thinking.md" },
+    { "Rotation" = "vol2/rotation.md" },
+    { "Rotation Problem–Results" = "vol2/rotation-problem-results.md" },
+    { "Creative Indexing" = "vol2/creative-indexing.md" },
+    { "⍴A+B Solution" = "vol2/rho-a-b-solution.md" },
+    { "Verification notes" = "vol2/verification.md" },
   ] },
+  { "About this edition" = "about.md" },
 ]
 
 [project.theme]
