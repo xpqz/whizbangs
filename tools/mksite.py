@@ -52,7 +52,8 @@ def pagemarks(t):
         n=pm.group(1)
         mark='<a class="pg" id="p%s" href="#p%s" title="printed page %s">%s</a>'%(n,n,n,n)
         if before and (before[-1].isalnum() or before[-1] in ',;-') and after[:1] and (after[0].islower() or after[0]=='('):
-            return ' '+mark+' '
+            # mid-sentence: the marker goes in the margin (or as a raised number on narrow screens)
+            return mark.replace('class="pg"','class="pg pgin"')+' '
         return '\n\n<p class="pgline">'+mark+'</p>\n\n'
     return SRCCOM.sub(sub,t)
 
