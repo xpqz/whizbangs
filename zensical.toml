@@ -1,0 +1,76 @@
+# Zensical site for the corrected transcription.
+#   python3 tools/mksite.py    regenerate web/docs/*.md from docs/collected-whizbangs-corrected.md
+#   zensical build             build to web/site      (zensical serve for a live preview)
+[project]
+site_name = "Collected Whizbangs"
+site_description = "An Anthology of Tutorials on APL Programming Techniques, Volume 1, by Roy A. Sykes, Jr. (STSC, 1978)"
+site_author = "Roy A. Sykes, Jr."
+docs_dir = "web/docs"
+site_dir = "web/site"
+use_directory_urls = false
+extra_css = ["stylesheets/extra.css"]
+nav = [
+  { "Cover" = "index.md" },
+  { "Note to Readers" = "note-to-readers.md" },
+  { "Articles" = [
+    { "What's in a Name?" = "whats-in-a-name.md" },
+    { "Permutation Vectors in APL – A Rank Answer" = "permutation-vectors.md" },
+    { "Subscription" = "subscription.md" },
+    { "Some Notes on Date Storage" = "date-storage.md" },
+    { "Stretching the Workspace" = "stretching-the-workspace.md" },
+    { "Branching and Iteration" = "branching-and-iteration.md" },
+    { "String Searching" = "string-searching.md" },
+    { "Timing Algorithms" = "timing-algorithms.md" },
+    { "Using Booleans to Control Computation" = "booleans.md" },
+    { "APL Potpourri" = "apl-potpourri.md" },
+    { "Data Selection" = "data-selection.md" },
+    { "Why Not to Loop" = "why-not-to-loop.md" },
+    { "Character Searches" = "character-searches.md" },
+    { "Back to Basics" = "back-to-basics.md" },
+  ] },
+  { "This edition" = [
+    { "About this edition" = "about.md" },
+    { "Verification notes" = "verification.md" },
+  ] },
+]
+
+[project.theme]
+language = "en"
+font = false
+features = [
+  "content.code.copy",
+  "content.footnote.tooltips",
+  "navigation.footer",
+  "navigation.sections",
+  "navigation.top",
+  "navigation.tracking",
+  "search.highlight",
+  "toc.follow",
+]
+
+[project.theme.icon]
+logo = "lucide/book-open"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
+
+[project.markdown_extensions]
+admonition = {}
+attr_list = {}
+footnotes = {}
+md_in_html = {}
+tables = {}
+toc.permalink = true
+pymdownx.betterem = {}
+pymdownx.highlight = {}
+pymdownx.inlinehilite = {}
+pymdownx.superfences = {}

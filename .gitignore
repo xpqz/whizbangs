@@ -1,0 +1,8 @@
+# Derived: rebuild with `make extract`, `make site`
+/build/
+/web/site/
+/web/docs/*.md
+/.cache/
+/.venv/
+__pycache__/
+.DS_Store
