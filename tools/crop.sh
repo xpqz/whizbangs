@@ -18,7 +18,8 @@ DPI=${6:-600}
 OUT=${7:-build/review/page${PAGE}-${X}-${Y}.png}
 
 VOLDIR="$(cd "$(dirname "$0")/.." && pwd)${WB_VOL:+/$WB_VOL}"
-PDF="$(ls "$VOLDIR"/*.pdf | head -1)"
+# The scan lives in originals/; src/scan.txt names it, relative to the repository root.
+PDF="$(cd "$(dirname "$0")/.." && pwd)/$(head -1 "$VOLDIR/src/scan.txt")"
 mkdir -p "$(dirname "$OUT")"
 
 # pdftoppm takes pixel arguments at the requested resolution.

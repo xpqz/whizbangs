@@ -5,10 +5,10 @@ Whizbangs* into Markdown and a web site:
 
 > *Collected Whizbangs: An Anthology Of Tutorials on APL Programming Techniques,
 > Volume 1*, Scientific Time Sharing Corporation, August 1978
-> (`197808_APL Plus Collected WhizBangs_P036-0878.pdf`, 25 scanned pages).
+> (`originals/197808_APL Plus Collected WhizBangs_P036-0878.pdf`, 25 scanned pages).
 >
 > *Collected Whizbangs, Volume 2*, STSC, Inc., 1981
-> (`vol2/Collected Whizbangs Volume 2.pdf`, 68 scanned pages, from the Internet
+> (`originals/Collected Whizbangs Volume 2.pdf`, 68 scanned pages, from the Internet
 > Archive item `collected-whizbangs-volume-2`). See [Volume 2](#volume-2).
 
 Most of this README describes Volume 1, which sits at the repository root.

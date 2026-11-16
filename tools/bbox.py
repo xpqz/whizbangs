@@ -11,9 +11,8 @@ import re
 import subprocess
 import sys
 
-import glob, os
-# Run from the volume directory (tools/extract.sh does); the one PDF there is the source.
-PDF = glob.glob("*.pdf")[0]
+# usage: bbox.py PDF   (tools/extract.sh passes the volume's scan)
+PDF = sys.argv[1]
 WORD = re.compile(
     r'<word xMin="([\d.]+)" yMin="([\d.]+)" xMax="([\d.]+)" yMax="([\d.]+)">(.*?)</word>'
 )

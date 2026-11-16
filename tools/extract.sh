@@ -16,7 +16,8 @@ TOOLS="$(cd "$(dirname "$0")" && pwd)"
 cd "$TOOLS/.."
 # WB_VOL selects a volume directory (e.g. vol2); unset means volume 1 at the repo root.
 [ -n "${WB_VOL:-}" ] && cd "$WB_VOL"
-PDF=$(ls *.pdf | head -1)
+# The scan lives in originals/; src/scan.txt names it, relative to the repository root.
+PDF="$TOOLS/../$(head -1 src/scan.txt)"
 # Page images at the scan's own resolution: 300 dpi for volume 1, 144 for volume 2.
 DPI=${WB_DPI:-300}
 PAGES=$(pdfinfo "$PDF" | awk '/^Pages:/{print $2}')
@@ -36,7 +37,7 @@ for p in $(seq 1 "$PAGES"); do
 done
 
 echo "==> word boxes (Acrobat layer)"
-python3 "$TOOLS/bbox.py" > build/text/bbox.tsv
+python3 "$TOOLS/bbox.py" "$PDF" > build/text/bbox.tsv
 
 echo "==> OCR pass B: tesseract"
 for p in $(seq 1 "$PAGES"); do

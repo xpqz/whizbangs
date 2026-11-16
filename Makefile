@@ -8,7 +8,7 @@
 # The transcription of record is src/pages/*.md. Everything in build/ is
 # derived and can be deleted at any time.
 
-PDF := 197808_APL Plus Collected WhizBangs_P036-0878.pdf
+PDF := originals/197808_APL Plus Collected WhizBangs_P036-0878.pdf
 OUT := docs/collected-whizbangs.md
 PAGES := $(sort $(wildcard src/pages/*.md))
 

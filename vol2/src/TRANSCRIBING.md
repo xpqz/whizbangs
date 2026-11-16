@@ -1,7 +1,7 @@
 # Transcribing Volume 2
 
 *Collected Whizbangs, Volume 2*, by Roy A. Sykes, Jr. (STSC, July 1981), from
-`vol2/Collected Whizbangs Volume 2.pdf` (archive.org item
+`originals/Collected Whizbangs Volume 2.pdf` (archive.org item
 `collected-whizbangs-volume-2`). The book is typeset: proportional serif text
 with a bold APL font for input and a regular APL font for output. It is
 scanned at 144 dpi, one page per PDF page, 612 × 792 pt.
