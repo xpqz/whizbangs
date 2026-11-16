@@ -50,6 +50,7 @@
    "On this page" sidebar is shown. */
 @media screen and (min-width: 76.25em) {
   .md-typeset p.pgline { float: right; margin: 0.2em 0 0 1em; }
+  .md-typeset p.pgline.pgown { float: none; margin: 1.2em 0 0.2em; }
   .md-typeset a.pg.pgin {
     float: right; margin: 0.35em 0 0 1em; font-size: 0.68em; vertical-align: baseline; padding: 0 0.35em;
   }

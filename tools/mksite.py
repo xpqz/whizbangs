@@ -54,7 +54,10 @@ def pagemarks(t):
         if before and (before[-1].isalnum() or before[-1] in ',;-') and after[:1] and (after[0].islower() or after[0]=='('):
             # mid-sentence: the marker goes in the margin (or as a raised number on narrow screens)
             return mark.replace('class="pg"','class="pg pgin"')+' '
-        return '\n\n<p class="pgline">'+mark+'</p>\n\n'
+        # before a code block, table or admonition the marker takes its own line, so as not to
+        # squeeze the block; before prose it floats beside the text
+        cls='pgline pgown' if re.match(r'\s*(```|\||!!!|<)',after) else 'pgline'
+        return '\n\n<p class="%s">'%cls+mark+'</p>\n\n'
     return SRCCOM.sub(sub,t)
 
 def admonitions(t):
